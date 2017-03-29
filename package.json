@@ -10,6 +10,7 @@
     "stylus-loader": "^2.0.0"
   },
   "dependencies": {
+    "manifesto.js": "^0.2.1",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
     "react-dom": "^15.4.2",
