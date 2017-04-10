@@ -22,11 +22,16 @@ const ManifestoReactMixins = {
     return services[0].id + '/full/400,/0/default.jpg'
   },
 
+  getCanvasCode: function(canvas_id){
+    const arr = canvas_id.split("/")
+    return arr.slice(-1)[0]
+  },
+
   posts: function(){
     const s = this.mainSequence()
     const canvases = s.getCanvases()
     return canvases.map(canvas => ({
-      code: canvas.id,
+      code: this.getCanvasCode(canvas.id),
       caption: canvas.getLabel(),
       likes: 0,
       id: canvas.id,

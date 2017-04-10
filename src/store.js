@@ -7,15 +7,14 @@ import mixins from './manifesto-react-mixins'
 import rootReducer from './reducers/index'
 
 import comments from './data/comments'
-import posts from './data/posts'
+//import posts from './data/posts'
+import manifests from './data/manifests'
 import manifesto from '../node_modules/manifesto.js/dist/server/manifesto.js'
 
-
-manifesto.loadManifest('http://digital.library.villanova.edu/Item/vudl:92879/Manifest').then(function (manifest) {
-  const m = manifesto.create(manifest)
-  // lets mix in some convenience methods into manifesto's instance
-  window.manifestation = Object.assign( m, mixins )
-});
+const m = manifesto.create(JSON.stringify(manifests[0]))
+// lets mix in some convenience methods into manifesto's instance
+window.manifestation = Object.assign( m, mixins )
+const posts = window.manifestation.posts()
 
 // create an object for the default data
 const defaultState = {
