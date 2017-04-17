@@ -7,6 +7,7 @@ import mixins from './manifesto-react-mixins'
 import rootReducer from './reducers/index'
 
 import comments from './data/comments'
+import toc from './data/toc'
 //import posts from './data/posts'
 import manifests from './data/manifests'
 import manifesto from '../node_modules/manifesto.js/dist/server/manifesto.js'
@@ -19,7 +20,8 @@ const posts = window.manifestation.posts()
 // create an object for the default data
 const defaultState = {
   posts,
-  comments
+  comments,
+  toc
 }
 
 const enhancers = compose(
