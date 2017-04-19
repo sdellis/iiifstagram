@@ -3,13 +3,14 @@ import Photo from './Photo'
 import {Treebeard} from 'react-treebeard'
 
 const PhotoGrid = React.createClass({
-    // onToggle(node, toggled){
-    //     if(this.props.toc.cursor){this.props.toc.cursor.active = false;}
-    //     node.active = true;
-    //     if(node.children){ node.toggled = toggled; }
-    //
-    //     //this.setState({ cursor: node });
-    // },
+    onToggle(node, toggled){
+        // if(this.props.toc.cursor){this.props.toc.cursor.active = false;}
+        // node.active = true;
+        // if(node.children){ node.toggled = toggled; }
+        // console.log("toggled!")
+        this.props.toggleNode(node, toggled)
+        //this.setState({ cursor: node });
+    },
   render() {
     return (
       <div className="container">

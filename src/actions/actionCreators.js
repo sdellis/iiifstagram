@@ -24,3 +24,12 @@ export function removeComment(postId, i) {
     postId
   }
 }
+
+// toggle tree node
+export function toggleNode(node, toggled) {
+  return {
+    type: 'TOGGLE_NODE',
+    toggled,
+    node
+  }
+}
