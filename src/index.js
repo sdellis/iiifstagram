@@ -12,9 +12,9 @@ import Single from './components/Single'
 import PhotoGrid from './components/PhotoGrid'
 
 //import react router deps
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute } from 'react-router'
 import { Provider } from 'react-redux'
-import store, { history, manifestation } from './store'
+import store, { history } from './store'
 
 const router = (
   <Provider store={store}>
