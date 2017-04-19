@@ -16,7 +16,7 @@ function toc(state = [], action) {
     default:
       return state;
   }
-  return state
+  //return state
 }
 
 export default toc
