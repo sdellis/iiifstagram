@@ -1,68 +1,42 @@
 import React from 'react'
-import { Component } from 'react'
 import * as actions from '../actions/actionCreators'
 
-export class Node extends Component {
-  handleIncrementClick = () => {
-    const { incrementTree } = this.props
-    const { id } = this.props.toc
-    incrementTree(id)
-  }
+const Node = React.createClass({
 
-  handleAddChildClick = e => {
-    e.preventDefault()
-    const { addChild, createNode } = this.props
-    const { id } = this.props.toc
-    const childId = createNode().nodeId
-    addChild(id, childId)
-  }
-
-  handleRemoveClick = e => {
-    e.preventDefault()
-
-    const { removeChild, deleteNode } = this.props
-    const { parentId, id } = this.props.toc
-    removeChild(parentId, id)
-    deleteNode(id)
-  }
-
-  renderChild = childId => {
-    const { id } = this.props.toc
+  renderNode(node, i) {
+    const thisNode = this.props.toc.entities.nodes[node];
+    let item;
+    if (thisNode.nodes.length > 0) {
+      item = (
+        <div className="nodeWithChildren">
+          <input type="checkbox" id={thisNode.id} />
+          <label className="tree_label" htmlFor={thisNode.id}>{thisNode.label}</label>
+          <ul>
+            {thisNode.nodes.map(this.renderNode)}
+          </ul>
+        </div>
+      )
+    } else {
+      item = (
+        <span className="tree_label">{thisNode.label}</span>
+      )
+    }
     return (
-      <li key={childId}>
-        <Node id={childId} parentId={id} />
+      <li className="node" key={thisNode.id}>
+        { item }
       </li>
     )
-  }
+  },
 
   render() {
-    const { counter, parentId, childIds } = this.props.toc
-    console.log(this.props)
     return (
-      <div>
-        Counter: {counter}
-        {' '}
-        <button onClick={this.handleIncrementClick}>
-          +
-        </button>
-        {' '}
-        {typeof parentId !== 'undefined' &&
-          <a href="#" onClick={this.handleRemoveClick}
-             style={{ color: 'lightgray', textDecoration: 'none' }}>
-            ×
-          </a>
-        }
-        <ul>
-          {childIds.map(this.renderChild)}
-          <li key="add">
-            <a href="#" onClick={this.handleAddChildClick}>
-              Add child
-            </a>
-          </li>
+      <div className="toc">
+        <ul className="tree">
+          {this.props.toc.entities.tree[0].nodes.map(this.renderNode)}
         </ul>
       </div>
     )
   }
-}
+})
 
 export default Node
