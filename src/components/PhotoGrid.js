@@ -1,6 +1,7 @@
 import React from 'react'
 import Photo from './Photo'
-import {Treebeard} from 'react-treebeard'
+import Node from './Node'
+// import {Treebeard} from 'react-treebeard'
 
 const PhotoGrid = React.createClass({
     onToggle(node, toggled){
@@ -8,14 +9,16 @@ const PhotoGrid = React.createClass({
         // node.active = true;
         // if(node.children){ node.toggled = toggled; }
         // console.log("toggled!")
+
         this.props.toggleNode(node, toggled)
         //this.setState({ cursor: node });
     },
   render() {
+    console.log(this.props)
     return (
       <div className="container">
         <div className="sidebar">
-          <Treebeard data={this.props.toc} onToggle={this.onToggle} />
+          <Node data={this.props} />
         </div>
         <div className="photo-grid">
           {this.props.posts.map((post, i) => <Photo {...this.props} key={i} i={i} post={post} />)}
