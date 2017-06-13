@@ -24,3 +24,12 @@ export function removeComment(postId, i) {
     postId
   }
 }
+
+// select tree node
+export function selectNode(node, selected) {
+  return {
+    type: 'SELECT_NODE',
+    selected,
+    node
+  }
+}
