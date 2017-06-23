@@ -7,6 +7,7 @@ import mixins from './manifesto-react-mixins'
 // import the root reducer
 import rootReducer from './reducers/index'
 
+import app from './data/config'
 import comments from './data/comments'
 //import toc from './data/toc'
 // import generateTree from './generateTree'
@@ -30,7 +31,8 @@ const toc = normalize(window.manifestation.getTree(), tree);
 const defaultState = {
   posts,
   comments,
-  toc
+  toc,
+  app
 }
 
 const enhancers = compose(
