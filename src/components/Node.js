@@ -1,5 +1,4 @@
 import React from 'react'
-import * as actions from '../actions/actionCreators'
 
 const Node = React.createClass({
 
@@ -29,8 +28,10 @@ const Node = React.createClass({
   },
 
   render() {
+    const { app } = this.props
     return (
-      <div className="toc">
+      <div id="slideout" className={this.props.app.toc_visible ? 'toc on' : 'toc'}>
+        <button onClick={this.props.toggleTOC.bind(null, app.toc_visible)} className="closebtn">&#9776;</button>
         <ul className="tree">
           {this.props.toc.entities.tree[0].nodes.map(this.renderNode)}
         </ul>

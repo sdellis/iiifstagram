@@ -33,3 +33,11 @@ export function selectNode(node, selected) {
     node
   }
 }
+
+// select tree node
+export function toggleTOC(toc_visible) {
+  return {
+    type: 'TOGGLE_TOC',
+    toc_visible
+  }
+}
